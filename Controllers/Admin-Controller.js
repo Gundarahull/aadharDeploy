@@ -2,7 +2,7 @@ const { where } = require("sequelize");
 const Enroll = require("../Models/Enrollement-Model");
 
 exports.getadmin = (req, res) => {
-  res.render("admin");
+  res.render('admin');
 };
 
 exports.postadmin = async (req, res) => {
@@ -11,7 +11,7 @@ exports.postadmin = async (req, res) => {
     const password = req.body.password;
 
     if (username === "RAHUL" && password === "12345") {
-      res.render("getenroll");
+      res.render('getenroll');
     } else {
       res.status(401).send("Unauthorized");
     }
@@ -28,7 +28,7 @@ exports.getpending = async (req, res) => {
     const viewdata = {
       enrolls: data,
     };
-    res.render("pendingenroll", viewdata);
+    res.render('pendingenroll', viewdata);
   } catch (error) {
     console.log("Error:", error);
     res.status(500).send("Internal Server Error");
@@ -43,7 +43,7 @@ exports.editenroll = async (req, res) => {
       data: data,
       id: data.id,
     };
-    res.render("editenroll", viewdata);
+    res.render('editenroll', viewdata);
   } catch (error) {
     console.log("Error:", error);
     res.status(500).send("Internal Server Error");
@@ -70,7 +70,7 @@ exports.updateenroll = async (req, res) => {
     };
     const data = await Enroll.update(updatedFields, { where: { id: id } });
     console.log("DATA after update", data);
-    res.redirect("/pending");
+    res.redirect('/pending');
   } catch (error) {
     console.log("Error:", error);
     res.status(500).send("Internal Server Error");
