@@ -1,7 +1,7 @@
 const Enroll = require("../Models/Enrollement-Model");
 
 exports.getenrollpage = (req, res) => {
-  res.render("enroll");
+  res.render('enroll');
 };
 
 exports.postenroll = async (req, res) => {
